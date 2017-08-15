@@ -135,3 +135,6 @@ MACHINE=<MACHINE> DISTRO=<DISTRO>  //指定目标开发板和目标系统
 ```txt
 bitbake core-image-base
 ```
+
+###5. 编译Yocto所遇到的问题
+- 编译evb-RK3288的时候出现问题
