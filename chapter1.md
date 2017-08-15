@@ -2,7 +2,7 @@
 
 ### 1. 获取源码
 
-####开发环境：Ubuntu 14.04
+####开发环境：Ubuntu 14.04/16.04
 
 - To initialize Linux SDK source tree ,you need to get repo first
 
@@ -135,3 +135,6 @@ MACHINE=<MACHINE> DISTRO=<DISTRO>  //指定目标开发板和目标系统
 ```txt
 bitbake core-image-base
 ```
+
+###5. 编译Yocto所遇到的问题
+- 编译evb-RK3288的时候出现问题
