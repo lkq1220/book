@@ -2,7 +2,7 @@
 
 ### 1. 获取源码
 
-####开发环境：Ubuntu 14.04
+####开发环境：Ubuntu 14.04/16.04
 
 - To initialize Linux SDK source tree ,you need to get repo first
 
