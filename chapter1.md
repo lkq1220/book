@@ -208,3 +208,192 @@ Summary: 1 task failed:
   /home/lkq/rk-linux-yocto/sources/meta-rockchip/recipes-bsp/u-boot/u-boot-rockchip_git.bb:do_compile
 Summary: There were 2 ERROR messages shown, returning a non-zero exit code.
 ```
+
+
+###6. 启动RK3288的问题
+- 使用rkbin文件夹中的loader.bin，出现无法引导启动内核的情况
+
+```txt
+U-Boot 2014.10-RK3288-06-02172-g9ae856e-dirty (Jan 17 2017 - 13:46:20)
+
+CPU: rk3288
+cpu version = 0
+CPU's clock information:
+    arm pll = 816000000HZ
+    periph pll = 297000000HZ
+    ddr pll = 396000000HZ
+    codec pll = 384000000HZ
+Board:  Rockchip platform Board
+DRAM:  Found dram banks: 1
+Adding bank:0000000000000000(0000000080000000)
+128 MiB
+GIC CPU mask = 0x00000001
+SdmmcInit = 0 400
+SdmmcInit = 2 0
+ERROR: v7_dcache_inval_range - start address is not aligned - 0x059bbc8c
+ERROR: v7_dcache_inval_range - stop address is not aligned - 0x059bbe8c
+ERROR: v7_dcache_inval_range - start address is not aligned - 0x059cba8c
+ERROR: v7_dcache_inval_range - stop address is not aligned - 0x059cbc8c
+ERROR: v7_dcache_inval_range - start address is not aligned - 0x059bbc8c
+ERROR: v7_dcache_inval_range - stop address is not aligned - 0x059bbe8c
+ERROR: v7_dcache_inval_range - start address is not aligned - 0x059cba8c
+ERROR: v7_dcache_inval_range - stop address is not aligned - 0x059cbc8c
+ERROR: v7_dcache_inval_range - start address is not aligned - 0x059bbc8c
+ERROR: v7_dcache_inval_range - stop address is not aligned - 0x059bbe8c
+ERROR: v7_dcache_inval_range - start address is not aligned - 0x059cba8c
+ERROR: v7_dcache_inval_range - stop address is not aligned - 0x059cbc8c
+ERROR: v7_dcache_inval_range - start address is not aligned - 0x059bbc8c
+ERROR: v7_dcache_inval_range - stop address is not aligned - 0x059bbe8c
+ERROR: v7_dcache_inval_range - start address is not aligned - 0x059cba8c
+ERROR: v7_dcache_inval_range - stop address is not aligned - 0x059cbc8c
+storage init OK!
+Using default environment
+
+GetParam
+W: Invalid Parameter's tag (0xFFFFFFFF)!
+Invalid parameter
+No pmic detect.
+SecureBootEn = 0, SecureBootLock = 0
+
+
+#Boot ver: 2017-01-17#2.30
+empty serial no.
+normal boot.
+checkKey
+vbus = 0
+no fuel gauge found
+no fuel gauge found
+read logo on state from dts [0]
+no fuel gauge found
+misc partition not found!
+Hit any key to stop autoboot:  0 
+'boot' does not seem to be a partition nor an address
+Unable to boot:boot
+try to start recovery
+'recovery' does not seem to be a partition nor an address
+Unable to boot:recovery
+try to start backup
+'backup' does not seem to be a partition nor an address
+Unable to boot:backup
+try to start rockusb
+```
+
+- 使用官方自带的loader.bin，出现无法引导启动内核的情况
+
+```txt
+U-Boot 2014.10-RK3288-10 (Oct 08 2016 - 15:45:52)
+
+CPU: rk3288
+cpu version = 0
+CPU's clock information:
+    arm pll = 600000000HZ
+    periph pll = 297000000HZ
+    ddr pll = 200000000HZ
+    codec pll = 384000000HZ
+Board:  Rockchip platform Board
+DRAM:  Found dram banks: 1
+Adding bank:0000000000000000(0000000080000000)
+128 MiB
+GIC CPU mask = 0x00000001
+SdmmcInit = 0 400
+SdmmcInit = 2 0
+storage init OK!
+Using default environment
+
+GetParam
+ERROR: [get_entry]: Not a resource image!
+No pmic detect.
+SecureBootEn = 0, SecureBootLock = 0
+
+#Boot ver: 2016-10-08#2.30
+empty serial no.
+checkKey
+vbus = 1
+no fuel gauge found
+no fuel gauge found
+read logo on state from dts [0]
+no fuel gauge found
+Hit any key to stop autoboot:  0 
+bad image magic.
+load boot image failed
+ERROR: [rk_load_image_from_storage]: bootrk: bad boot or kernel image
+Unable to boot:boot
+try to start recovery
+bad image magic.
+load boot image failed
+ERROR: [rk_load_image_from_storage]: bootrk: bad boot or kernel image
+Unable to boot:recovery
+try to start backup
+bad image magic.
+load boot image failed
+ERROR: [rk_load_image_from_storage]: bootrk: bad boot or kernel image
+Unable to boot:backup
+try to start rockusb
+
+DDR Version 1.00 20141007
+In
+Channel a: DDR3 200MHz
+Bus Width=32 Col=10 Bank=8 Row=15 CS=1 Die Bus-Width=16 Size=1024MB
+Channel b: DDR3 200MHz
+Bus Width=32 Col=10 Bank=8 Row=15 CS=1 Die Bus-Width=16 Size=1024MB
+Memory OK
+Memory OK
+OUT
+```
+
+- 使用firefly所提供的uboot和kernel可以进入内核启动，但是内核启动不起来
+
+```txt
+U-Boot 2014.10-RK3288-01-gc0494ea (Aug 14 2017 - 16:12:23)
+
+CPU: rk3288
+CPU's clock information:
+    arm pll = 600000000HZ
+    periph pll = 297000000HZ
+    ddr pll = 200000000HZ
+    codec pll = 384000000HZ
+Board:  Rockchip platform Board
+DRAM:  Found dram banks:1
+Adding bank:0000000000000000(0000000080000000)
+2 GiB
+storage init OK!
+Using default environment
+
+GetParam
+check parameter success
+Unknow param: MACHINE_MODEL:rk3288!
+Unknow param: MACHINE_ID:007!
+Unknow param: MANUFACTURER:RK3288!
+Unknow param: B!
+Unknow param: P!
+Unknow param: WR_HLD: 0,0,A,0,1!
+failed to prepare fdt from boot!
+failed to find part:resource
+failed to prepare fdt from resource!
+no adc node
+can't find dts node for ricoh619
+can't find dts node for act8846
+can't find dts node for rk808
+can't find dts node for rk818
+Can't find dts node for fuel guage cw201x
+SecureBootEn = 0, SecureBootLock = 0
+
+#Boot ver: 2017-08-14#2.19
+empty serial no.
+checkKey
+vbus = 1
+no fuel gauge found
+no fuel gauge found
+read logo_on switch from dts [0]
+no fuel gauge found
+Hit any key to stop autoboot:  0 
+failed to load fdt from boot!
+failed to find part:resource
+failed to load fdt!
+kernel   @ 0x02000000 (0x00677197)
+ramdisk  @ 0x04bf0000 (0x00276270)
+Secure Boot state: 0
+bootrk: do_bootm_linux...
+
+Starting kernel ... 
+```
