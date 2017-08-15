@@ -28,5 +28,63 @@ repo下载：sudo apt-get install phablet-tools\(原本网站的sudo apt-get ins
 
 - 执行sudo repo sync，开始下载源码
 
+###2. 编译运行源码
+- 执行sudo apt-get install git-core gitk git-gui gcc-arm-linux-gnueabihf u-boot-tools device-tree-compiler gcc-aarch64-linux-gnu mtools parted libudev-dev libusb-1.0-0-dev libssl-dev
+   - 报错，需要升级编译器，故需要先执行sudo apt-get install  gcc-4.8-aarch64-linux-gnu
+   
 
+- 安装好环境之后，便可以编译u-boot，但发现执行CROSS_COMPILE=arm-linux-gnueabihf- make XXXX_defconfig all，只有3288可以编译通过
+   - 试验了3399和3328均失败，猜测是否是因为32位的问题。
+   
+
+- 尝试用传统uboot编译方式进行编译，设置好文件编译配置环境
+   - make CROSS_COMPILE=arm-linux-gnueabi- <board_name>_defconfig，我是使用fire3399的板子，故选择firefly-rk3399_defconfig 
+   - 根据3399为64位CPU，选择for ARM64选项进行编译，选择编译工具链下载，这里是64位，故执行sudo apt-get install gcc-aarch64-linux-gnu
+   - 执行make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ，开始编译，经过试验，编译成功通过
+   
+   
+- kernel的编译比较顺利，按照ARMv8的方法编译即可通过
+
+- 编译rootfs时候出现问题：
+```txt
+sudo apt-get install binfmt-support qemu-user-static
+sudo dpkg -i ubuntu-build-service/packages/*
+sudo apt-get install -f
+TARGET=desktop ARCH=armhf ./mk-base-debian.sh
+按照文档顺序会出现编译出错，缺少依赖包，故修改为：
+sudo apt-get install binfmt-support qemu-user-static
+sudo apt-get install -f
+ARCH=armhf ./mk-rootfs.sh
+此时编译成功
+执行TARGET=desktop ARCH=armhf ./mk-base-debian.sh,需要等待较长时间
+执行ARCH=armhf ./mk-rootfs.sh
+执行./mk-image生成镜像
+```
+- boot 
+
+   - 下载RKdeveloptool:git clone https://github.com/rockchip-linux/rkdeveloptool.git
+   - 下载编译环境：sudo apt-get install libudev-dev libusb-1.0-0-dev
+   - 下载成功后，执行autoreconf -i报错，缺少该包，进行下载sudo apt-get install autoconf解决
+   - ./configure
+   - make
+   - make install
+   
+- 生成镜像
+   - ./build/mk-uboot.sh rk3399-firefly
+   - ./build/mk-kernel.sh rk3399-firefly
+
+- 烧录板子
+```txt
+sudo rkdeveloptool db rk3399_loader_v1.08.106.bin
+sudo rkdeveloptool wl 0x40 idbloader.img
+sudo rkdeveloptool wl 0x4000 uboot.img
+sudo rkdeveloptool wl 0x6000 trust.img
+sudo rkdeveloptool wl 0x8000 boot.img
+sudo rkdeveloptool wl 0x40000 linaro-rootfs.img
+sudo rkdeveloptool rd
+以上两种方式烧写，重启后在串口按回车键进入命令行配置模式，输入以下命令刷入
+gpt 分区表后，系统将重新启动，并加载 rootfs。
+gpt write mmc 0 $partitions
+boot
+```
 
