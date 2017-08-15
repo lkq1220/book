@@ -137,4 +137,74 @@ bitbake core-image-base
 ```
 
 ###5. 编译Yocto所遇到的问题
-- 编译evb-RK3288的时候出现问题
+- 编译evb-RK3288的时候出现问题,编译excavator-rk3399的Ycoto出错
+   - 出现错误1：
+```txt
+| ImportError: No module named libfdt | *** dtoc needs the Python libfdt lib 
+| Traceback (most recent call last):
+|   File "<stdin>", line 1, in <module>
+| ImportError: No module named libfdt
+| *** dtoc needs the Python libfdt library. Either
+| *** install it on your system, or try:
+| ***
+| *** sudo apt-get install swig libpython-dev
+| ***
+| *** to have U-Boot build its own version.
+| /home/lkq/rk-yocto-bsp/rk3399/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git/scripts/Makefile.spl:359: recipe for target 'checkdtoc' failed
+| make[2]: *** [checkdtoc] Error 1
+| /home/lkq/rk-yocto-bsp/rk3399/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git/Makefile:1396: recipe for target 'spl/u-boot-spl' failed
+| make[1]: *** [spl/u-boot-spl] Error 2
+| make[1]: Leaving directory '/home/lkq/rk-yocto-bsp/rk3399/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/build'
+| ERROR: oe_runmake failed
+| Makefile:150: recipe for target 'sub-make' failed
+| make: *** [sub-make] Error 2
+| make: Leaving directory '/home/lkq/rk-yocto-bsp/rk3399/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git'
+| WARNING: exit code 1 from a shell command.
+| ERROR: Function failed: do_compile (log file is located at /home/lkq/rk-yocto-bsp/rk3399/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/temp/log.do_compile.58104)
+  ERROR: Task (/home/lkq/rk-yocto-bsp/sources/meta-rockchip/recipes-bsp/u-boot/u-boot-rockchip_git.bb:do_compile) failed with exit code '1'  
+```
+   - 解决方法：安装响应的软件包(sudo apt-get install swig libpython-dev)还是会报如此错误，进入系统目录下的tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git下载的uboot进行编译，编译通过，重新返回，继续编译镜像，报第二个错误。
+
+
+   - 出现错误2：
+    
+```txt
+NOTE: Executing SetScene Tasks
+NOTE: Executing RunQueue Tasks
+ERROR: u-boot-rockchip-v2017.05+gitAUTOINC+9fe6f2383c-r0 do_compile: oe_runmake failed
+ERROR: u-boot-rockchip-v2017.05+gitAUTOINC+9fe6f2383c-r0 do_compile: Function failed: do_compile (log file is located at /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/temp/log.do_compile.19127)
+ERROR: Logfile of failure stored in: /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/temp/log.do_compile.19127
+Log data follows:
+| DEBUG: Executing shell function do_compile
+| NOTE: make -j 4 CROSS_COMPILE=aarch64-rk-linux- CC=aarch64-rk-linux-gcc  --sysroot=/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot V=1 HOSTCC=gcc  -isystem/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/usr/include -O2 -pipe -L/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/usr/lib -L/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/lib -Wl,-rpath-link,/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/usr/lib -Wl,-rpath-link,/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/lib -Wl,-rpath,/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/usr/lib -Wl,-rpath,/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/lib -Wl,-O1 -C /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git O=/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/build evb-rk3399_defconfig
+| make: Entering directory '/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git'
+| make -C /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/build KBUILD_SRC=/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git \
+| -f /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git/Makefile evb-rk3399_defconfig
+| make[1]: Entering directory '/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/build'
+| make -f /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git/scripts/Makefile.build obj=scripts/basic
+| ln -fsn /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git source
+| rm -f .tmp_quiet_recordmcount
+| /bin/bash /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git/scripts/mkmakefile \
+|     /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git . 2017 07
+|   GEN     ./Makefile
+| make -f /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git/scripts/Makefile.build obj=scripts/kconfig evb-rk3399_defconfig
+|   gcc  -isystem/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/usr/include -O2 -pipe -L/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/usr/lib -L/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/lib -Wl,-rpath-link,/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/usr/lib -Wl,-rpath-link,/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/lib -Wl,-rpath,/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/usr/lib -Wl,-rpath,/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/recipe-sysroot-native/lib -Wl,-O1  -o scripts/kconfig/conf scripts/kconfig/conf.o scripts/kconfig/zconf.tab.o
+| /bin/sh: 1: cannot create scripts/kconfig/.conf.cmd: Permission denied
+| scripts/Makefile.host:108: recipe for target 'scripts/kconfig/conf' failed
+| make[2]: *** [scripts/kconfig/conf] Error 2
+| /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git/Makefile:478: recipe for target 'evb-rk3399_defconfig' failed
+| make[1]: *** [evb-rk3399_defconfig] Error 2
+| make[1]: Leaving directory '/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/build'
+| Makefile:150: recipe for target 'sub-make' failed
+| make: *** [sub-make] Error 2
+| make: Leaving directory '/home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/git'
+| ERROR: oe_runmake failed
+| WARNING: exit code 1 from a shell command.
+| ERROR: Function failed: do_compile (log file is located at /home/lkq/rk-linux-yocto/conf/tmp/work/excavator_rk3399-rk-linux/u-boot-rockchip/v2017.05+gitAUTOINC+9fe6f2383c-r0/temp/log.do_compile.19127)
+ERROR: Task (/home/lkq/rk-linux-yocto/sources/meta-rockchip/recipes-bsp/u-boot/u-boot-rockchip_git.bb:do_compile) failed with exit code '1'
+NOTE: Tasks Summary: Attempted 2521 tasks of which 2514 didn't need to be rerun and 1 failed.
+
+Summary: 1 task failed:
+  /home/lkq/rk-linux-yocto/sources/meta-rockchip/recipes-bsp/u-boot/u-boot-rockchip_git.bb:do_compile
+Summary: There were 2 ERROR messages shown, returning a non-zero exit code.
+```
