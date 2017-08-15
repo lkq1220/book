@@ -88,7 +88,7 @@ gpt write mmc 0 $partitions
 boot
 ```
 
-###编译buildroot出现的问题
+###3. 编译buildroot出现的问题
 - 文件系统编译失败，无法生成rootfs.img
 - 解决方法：
 ```txt
@@ -100,3 +100,38 @@ sudo apt-egt upgrade g++
 - 开发板启动之后无法进入文件系统，都是不断重启，回到uboot中，在firefly开发板当中并没有遇见
 - 解决方法：电源问题，由于供电不足导致LCD无法正常启动，故进入循环
 
+###4. 编译yocto流程
+- 创建工作目录并进入
+   - mkdir rk-yocto-bsp
+   - cd rk-yocto-bsp
+
+- 初始化源码和源码树，下载源码
+```txt
+repo init --repo-url=https://github.com/rockchip-linux/repo -u https://github.com/rockchip-linux/manifests -b yocto
+repo sync
+```
+
+- 配置编译环境
+   - 官网手册如下:
+```txt
+sudo apt-get install gawk wget git-core diffstat unzip texinfo build-essential chrpath socat cpio python python3 pip3 pexpect libsdl1.2-dev xterm make xsltproc docbook-utils fop dblatex xmlto python-git libssl-dev
+```
+   - 有两个包需要改变一下，在apt下载时找不到pip3和pexpect，修改如下在ubuntu14.04下需要使用：
+```txt
+sudo apt-get install gawk wget git-core diffstat unzip texinfo build-essential chrpath socat cpio python python3 python3-pip python-pexpect libsdl1.2-dev xterm make xsltproc docbook-utils fop dblatex xmlto python-git libssl-dev
+```
+- 设置编译目标开发板和编译目录
+```txt
+mkdir <build_dir>  //创建编译目录
+MACHINE=<MACHINE> DISTRO=<DISTRO>  //指定目标开发板和目标系统
+--示例MACHINE=excavator-rk3399 DISTRO=rk-x11  //挖掘机版本，编译系统为Yocto x11版本
+```
+
+- 初始化环境变量并指定编译目录
+```txt
+. ./setup-environment -b <build_dir>
+```
+- 开始编译
+```txt
+bitbake core-image-base
+```
