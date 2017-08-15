@@ -135,3 +135,5 @@ MACHINE=<MACHINE> DISTRO=<DISTRO>  //指定目标开发板和目标系统
 ```txt
 bitbake core-image-base
 ```
+
+###5. 
