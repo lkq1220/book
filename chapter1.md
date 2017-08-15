@@ -88,3 +88,15 @@ gpt write mmc 0 $partitions
 boot
 ```
 
+###编译buildroot出现的问题
+- 文件系统编译失败，无法生成rootfs.img
+- 解决方法：
+```txt
+sudo apt-get update
+sudo apt-egt upgrade g++
+升级编译器版本，编译成功，生成rootfs.img
+其他的uboot和kernel镜像根据开发板具体型号进行编译
+```
+- 开发板启动之后无法进入文件系统，都是不断重启，回到uboot中，在firefly开发板当中并没有遇见
+- 解决方法：电源问题，由于供电不足导致LCD无法正常启动，故进入循环
+
