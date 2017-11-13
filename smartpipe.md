@@ -87,8 +87,12 @@
 
 ####4. Results and Discussion
 提出的泄漏检测方法是基于管道的相对压力变化曲线，因此没有必要对传感器进行校准。实验室测试的传感器原始数据如图10所示。从图中可以看出，实验的四个主要阶段(泵启动、稳定、泄漏、泵脱)可以从压力传感器的输出结果中清晰可见。这些包括泵开启之前的压力,当泵开启的时候的压力增加,由于泄漏造成的压力迅速下降，由于关闭泵后的压力下降。
-
-
+#####图10 实验室实验的原始传感器输出（5个FSR传感器的压力曲线）
+![](/assets/图10.png)
+#####图11 泄漏的发生时5个FSR传感器测量的压降曲线
+![](/assets/图11.png)
+从图10可以清楚地看到，模拟的泄漏可以从传感器的原始输出中检测出来，这是系统的一个突然的压力下降。然而，基于图10，很难确定泄漏的确切位置，因为所有的FSR传感器似乎对泄漏的反应类似。
+图11显示了由于模拟的爆炸产生的压力下降的曲线。从这个数字可以看出，传感器4和5的压力曲线在泄漏点的下游与泄漏的上游不同。这些传感器的轮廓比泄漏前更容易出现压力下降。这种差异可以用来确定泄漏的大致位置。故在这种情况下，它介于传感器3和4之间。
 [26] Sadeghioon, A.M.; Walton, R.; Chapman, D.; Metje, N.; Anthony, C.; Ward, M. Design and
 development of a non intrusive pressure measurement system for pipeline monitoring. J. Pipeline
 Syst. Eng. Pract. 2014, (Accepted awaiting publication)
