@@ -93,6 +93,8 @@
 ![](/assets/图11.png)
 从图10可以清楚地看到，模拟的泄漏可以从传感器的原始输出中检测出来，这是系统的一个突然的压力下降。然而，基于图10，很难确定泄漏的确切位置，因为所有的FSR传感器似乎对泄漏的反应类似。
 图11显示了由于模拟的爆炸产生的压力下降的曲线。从这个数字可以看出，传感器4和5的压力曲线在泄漏点的下游与泄漏的上游不同。这些传感器的轮廓比泄漏前更容易出现压力下降。这种差异可以用来确定泄漏的大致位置。故在这种情况下，它介于传感器3和4之间。
+除了在实验室测试中检测出爆裂外，基于FSR的压力传感器在田间试验中，成功地记录了管道的日常压力变化。图12显示了传感器节点的相对压力数据和温度读数，在此期间进行了3天的泄漏测试。在这些测试中，各种服务阀门被反复打开并关闭，作为测试现场阀门培训项目的一部分。图中显示的数据是来自于一个直径为90毫米MDPE管的测试节点。
+
 [26] Sadeghioon, A.M.; Walton, R.; Chapman, D.; Metje, N.; Anthony, C.; Ward, M. Design and
 development of a non intrusive pressure measurement system for pipeline monitoring. J. Pipeline
 Syst. Eng. Pract. 2014, (Accepted awaiting publication)
