@@ -80,9 +80,12 @@
 #####图8 实验室检测装置的照片
 ![](/assets/图8.png)
 #####3.2 Field Trials
+为了全面评估节点和传感器在现实生活中的性能，将传感器被部署在一个泄漏测试设备上(连接到主供水系统)。每个节点连接两个温度传感器和一个基于FSR的压力传感器。其中一个温度传感器直接连接到管道，以测量管壁温度，而另一个温度传感器距离管道大约30厘米，以测量管道周围的土壤温度。每个传感器节点每1027s(大约17分钟)测量所有三个参数，并将这些数据传递给位于节点附近的一个建筑物中的主节点。这些数据被记录在本地，并通过互联网与其他设备共享。图9显示了安装在管道上的节点，以及连接到管道和周围土壤中的传感器。
 
+#####图9 传感器节点及其传感器连接到管道上的泄漏测试设施
+![](/assets/图9.png)
 
-
+####4. Results and Discussion
 
 [26] Sadeghioon, A.M.; Walton, R.; Chapman, D.; Metje, N.; Anthony, C.; Ward, M. Design and
 development of a non intrusive pressure measurement system for pipeline monitoring. J. Pipeline
