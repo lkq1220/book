@@ -96,7 +96,70 @@
 除了在实验室测试中检测出爆裂外，基于FSR的压力传感器在田间试验中，成功地记录了管道的日常压力变化。图12显示了传感器节点的相对压力数据和温度读数，在此期间进行了3天的泄漏测试。在这些测试中，各种服务阀门被反复打开并关闭，作为测试现场阀门培训项目的一部分。图中显示的数据是来自于一个直径为90毫米MDPE管的测试节点。
 #####图12 一个直径为90毫米MDPE管的测试节点五天的数据
 ![](/assets/图12.png)
-如图12所示，所提出的非侵入式压力传感器清晰地记录了管道中的日常压力变化。在连续三天内进行阀门的训练，并通过异常的压降使其变化明显，相比于正常的日常相对压力变化(0.4 - 0.95)更大。此外，还注意到管壁温度(蓝线)在同一时间显著下降，与土壤温度测量结果不同。与此相反，在2013年7月21日，记录了一个压力降，却没有相应的管壁温度下降。在这种情况下，压降不是由于泄漏试验导致，而是整个系统的压力变化(在每天的压力变化范围内)。管道壁的温度下降是由于管道内的水停留时间减少造成的。尽管温度传感器从未打算用于泄漏检测,图12显示了利用温度数据与FSR数据相结合的方式，以区别于系统中其他压力变化的泄漏,特别是在分析单个节点位置时，并没有将整个传感器网络考虑到实验室的测试中。然而，需要进一步的测试来彻底验证这个假设。此外，温度测量还可以为操作员提供有用的信息，以保护他们在冬季的资产。所提出的泄漏检测方法是为了识别在管道正常的局部压力曲线中产生变化的泄漏。因此，可以探测到的泄漏最小尺寸取决于管道几何和材料以及操作参数(压力管理系统、PRV控制等)。相对于绝对压力读数，相对压力变化的主要好处之一是结果较少受到误差的影响。环境因素，例如夹住FSR传感器夹子的降解，以及由于夹的松弛而逐渐失去接触压力，可能会导致读数错误。然而，这不会对泄漏检测算法产生很大的影响，因为它可以在泄漏检测算法中得到补偿。
-[26] Sadeghioon, A.M.; Walton, R.; Chapman, D.; Metje, N.; Anthony, C.; Ward, M. Design and
+如图12所示，所提出的非侵入式压力传感器清晰地记录了管道中的日常压力变化。在连续三天内进行阀门的训练，并通过异常的压降使其变化明显，相比于正常的日常相对压力变化(0.4 - 0.95)更大。此外，还注意到管壁温度(蓝线)在同一时间显著下降，与土壤温度测量结果不同。与此相反，在2013年7月21日，记录了一个压力降，却没有相应的管壁温度下降。在这种情况下，压降不是由于泄漏试验导致，而是整个系统的压力变化(在每天的压力变化范围内)。管道壁的温度下降是由于管道内的水停留时间减少造成的。尽管温度传感器从未打算用于泄漏检测,图12显示了利用温度数据与FSR数据相结合的方式，以区别于系统中其他压力变化的泄漏,特别是在分析单个节点位置时，并没有将整个传感器网络考虑到实验室的测试中。然而，需要进一步的测试来彻底验证这个假设。此外，温度测量还可以为操作员提供有用的信息，以保护他们在冬季的资产。所提出的泄漏检测方法是为了识别在管道正常的局部压力曲线中产生变化的泄漏。因此，可以探测到的泄漏最小尺寸取决于管道几何和材料以及操作参数(压力管理系统、PRV控制等)。相对于绝对压力读数，相对压力变化的主要好处之一是结果较少受到误差的影响。环境因素，例如夹住FSR传感器夹子的降解，以及由于夹的松弛而逐渐失去接触压力，可能会导致读数错误。然而，这不会对泄漏检测算法产生很大的影响，因为它可以在泄漏检测算法中得到补偿。但是这个过程是渐进的，可能会在一段较长的时间内发生，与传感器对泄漏的反应不同。此外，重要的是要认识到泄漏检测不仅要从单个传感器进行测量，而且还需要结合邻近节点的数据分析，如实验室测试中所示，以区分由于泄漏和系统中泄漏的压力下降。
+
+####5. Conclusions
+无线智能传感器网络是一种可行的解决方案，可以监测地下管道的状况，尤其是压力和泄漏。它们相比比其他常用的泄漏检测方法的优势：不会因为单个故障节点不会使整个系统崩溃，并允许在没有操作员干预的情况下进行持续监视。超低功率的智能无线传感器网络允许它们在没有维护的情况下延长运行时间。这使得它们现在既可以用于现有的，也可以用于新型的电力供应。通过仔细硬件选择和适配的固件达到2µW的超低功耗。
+本文提出了一种基于FSR传感器的非侵入式(对管道)压力测量方法。这种方法可以很容易地在管道上安装传感器节点，而不会破坏管道的结构完整性。FSR传感器在实验室测试和现场试验中都检测到了压力变化。实验室数据表明泄漏所引起的压降曲线与泄漏前后的测量值不同，这可能被用来确定泄漏的位置。传感器节点成功地部署在野外试验中，采集温度和相对压力数据。在相对压力传感器(FSR)和温度传感器上，节点都清楚地显示了泄漏测试和日常压力变化。假定温度传感器有可能与FSR数据相结合，以识别泄漏，而不是“正常”的压力下降。这进一步验证了地下无线传感网络用于管道监测的潜力。
+####6. References
+1. Atzori, L.; Iera, A.; Morabito, G. The internet of things: A survey. Comput. Netw. 2010, 54,
+2787–2805.
+2. Miorandi, D.; Sicari, S.; De Pellegrini, F.; Chlamtac, I. Internet of things: Vision, applications and
+research challenges. Ad Hoc Netw. 2012, 10, 1497–1516.
+3. Christin, D.; Reinhardt, A.; Mogre, P.S.; Steinmetz, R. Wireless Sensor Networks and the Internet
+of Things : Selected Challenges. In Proceedings of the 8th GI/ITG KuVS Fachgespräch Drahtlose
+Sensornetze, Hamburg, Germany, August 2009; pp. 31–33.
+4. Yu, X.; Wu, P.; Han, W.; Zhang, Z. Overview of wireless underground sensor networks for
+agriculture. Afr. J. Biotechnol. 2012, 11, 3942–3948.
+5. Hieu, B.; Choi, S.; Kim, Y.U.; Park, Y.; Jeong, T. Wireless transmission of acoustic emission
+signals for real-time monitoring of leakage in underground pipes. KSCE J. Civ. Eng. 2011, 15,
+805–812.
+6. Akyildiz, I.F.; Sun, Z.; Vuran, M.C. Signal propagation techniques for wireless underground
+communication networks. Phys. Commun. 2009, 2, 167–183.
+7. Liu, Z.; Kleiner, Y. State-of-the-art review of technologies for pipe structural health monitoring.
+IEEE Sens. J. 2012, 12, 1987–1992.
+8. Kingajay, M.; Jitson, T. Real-time laser monitoring based on pipe detective operation. Proc.
+World Acad. Sci. Eng. Technol. 2008, 44, 127–132.
+9. Sinha, S.K.; Knight, M.A. Intelligent system for condition monitoring of underground pipelines.
+Comput. Civ. Infrastruct. Eng. 2004, 19, 42–53.
+10. Gao, Y.; Brennan, M.; Joseph, P.; Muggleton, J.; Hunaidi, O. On the selection of
+acoustic/vibration sensors for leak detection in plastic water pipes. J. Sound Vib. 2005, 283,
+927–941.
+11. Khulief, Y.A.; Khalifa, A.; Ben Mansour, R.; Habib, M.A. Acoustic detection of leaks in water
+pipelines using measurements inside pipe. J. Pipeline Syst. Eng. Pract. 2012, 3, 47–54.
+12. Stoianov, I.; Nachman, L.; Madden, S.; Tokmouline, T.; Csail, M. PIPENET: A Wireless Sensor
+Network for Pipeline Monitoring. In Proceedings of IEEE the 6th International Symposium on
+Information Processing in Sensor Networks (IPSN 2007), Cambridge, MA, USA, 25–27 April
+2007; pp. 264–273.
+13. Ahadi, M.; Bakhtiar, M.S. Leak detection in water-filled plastic pipes through the application of
+tuned wavelet transforms to Acoustic Emission signals. Appl. Acoust. 2010, 71, 634–639.
+14. Muggleton, J.M.; Brennan, M.J. Leak noise propagation and attenuation in submerged plastic
+water pipes. J. Sound Vib. 2004, 278, 527–537.
+15. Muggleton, J.M.; Brennan, M.J.; Pinnington, R.J.; Gao, Y. A novel sensor for measuring the
+acoustic pressure in buried plastic water pipes. J. Sound Vib. 2006, 295, 1085–1098.
+16. Gao, Y.; Brennan, M.J.; Joseph, P.F.; Muggleton, J.M.; Hunaidi, O. A model of the correlation
+function of leak noise in buried plastic pipes. J. Sound Vib. 2004, 277, 133–148.
+17. Nakhkash, M. Water Leak Detection Using Ground Penetrating Radar. In Proceedings of the 10th
+International Conference on Ground Penetrating Radar, Delft, The Netherlands, 21–24 June 2004;
+pp. 525–528.
+18. Li, H.-N.; Li, D.-S.; Song, G.-B. Recent applications of fiber optic sensors to health monitoring in
+civil engineering. Eng. Struct. 2004, 26, 1647–1657.
+19. Yan, S.Z.; Chyan, L.S. Performance enhancement of BOTDR fiber optic sensor for oil and gas
+pipeline monitoring. Opt. Fiber Technol. 2010, 16, 100–109.
+20. Nikles, M. Long-distance fiber optic sensing solutions for pipeline leakage, intrusion and ground
+movement detection. Proc. SPIE 2009, vol. 7316, 731602–731613.
+21. Myles, A. Permanent Leak Detection on Pipes using a Fibre Optic Based Continuous Sensor
+Technology. In Proceedings of Pipelines Conference 2011: A Sound Conduit for Sharing
+Solutions, Seattle, WA, USA, 23–27 July 2011; pp. 744–754.
+22. López-higuera, J.M.; Cobo, L.R.; Incera, A.Q.; Cobo, A. Fiber optic sensors in structural health
+monitoring. J. Light. Technol. 2011, 29, 587–608.
+23. Akyildiz, I.F.; Stuntebeck, E.P. Wireless underground sensor networks: Research challenges. Ad
+Hoc Netw. 2006, 4, 669–686.
+24. Walton, R.; Sadeghioon, A.M.; Metje, N.; Chapman, D.; Ward, M. Smart Pipes: The Future for
+Proactive Asset Management. In Proceedings of the International Conference on Pipelines and
+Trenchless Technology, Beijing, China, 26–29 October 2011; pp. 1512–1523.
+25. Metje, N.; Chapman, D.N.; Metje, N.; Walton, R.; Sadeghioon, A.M.; Ward, M. Real time
+condition monitoring of buried water pipes. Tunn. Undergr. Sp. Technol. 2012, 28, 315–320.
+26. Sadeghioon, A.M.; Walton, R.; Chapman, D.; Metje, N.; Anthony, C.; Ward, M. Design and
 development of a non intrusive pressure measurement system for pipeline monitoring. J. Pipeline
 Syst. Eng. Pract. 2014, (Accepted awaiting publication)
