@@ -86,6 +86,8 @@
 ![](/assets/图9.png)
 
 ####4. Results and Discussion
+提出的泄漏检测方法是基于管道的相对压力变化曲线，因此没有必要对传感器进行校准。实验室测试的传感器原始数据如图10所示。从图中可以看出，实验的四个主要阶段(泵启动、稳定、泄漏、泵脱)可以从压力传感器的输出结果中清晰可见。这些包括泵开启之前的压力,当泵开启的时候的压力增加,由于泄漏造成的压力迅速下降，由于关闭泵后的压力下降。
+
 
 [26] Sadeghioon, A.M.; Walton, R.; Chapman, D.; Metje, N.; Anthony, C.; Ward, M. Design and
 development of a non intrusive pressure measurement system for pipeline monitoring. J. Pipeline
