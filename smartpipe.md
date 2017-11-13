@@ -76,8 +76,13 @@
 ####3. Leak Detection Experimental Setup
 #####3.1. Laboratory Test
 设计和开发了一个基于实验室的测试工作台系统，以测试所提议的非侵入性(对管道)压力传感器组件的能力，用于检测和定位泄漏。该系统由一个由40毫米PVC管组成U型截面，中间部分模拟泄漏(如图8)。水在系统中通过一种普通的水泵循环，能够提供3标准压力。一个直径为10毫米的孔是在PVC管段中间部分制成，如图8所示。这个孔被插入了一个橡胶插入物，它会在一个随机的时间后弹出，导致管道泄漏，但当橡胶插入弹出来的时候，它的行为更像是一个小爆炸。
+图8显示5个FSR传感器，以2 m的间隔连接在PVC管段上。传感器1、2和3位于管道泄漏位置前，传感器4和5位于管道位置泄漏后。每个传感器都用不锈钢联接螺旋夹固定在管道上。在使用型号为Labjack U3数据采集设备的每个传感器，收集从FSR的压力组件发出的信号为每秒钟一百个样本。该实验的高数据率允许鉴定FSR的最佳采样率。
 #####图8 实验室检测装置的照片
 ![](/assets/图8.png)
+#####3.2 Field Trials
+
+
+
 
 [26] Sadeghioon, A.M.; Walton, R.; Chapman, D.; Metje, N.; Anthony, C.; Ward, M. Design and
 development of a non intrusive pressure measurement system for pipeline monitoring. J. Pipeline
