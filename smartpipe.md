@@ -75,7 +75,9 @@
 
 ####3. Leak Detection Experimental Setup
 #####3.1. Laboratory Test
-设计和开发了一个基于实验室的测试工作台系统，以测试所提议的非侵入性(对管道)压力传感器组件的能力，用于检测和定位泄漏。该系统由一个U型截面组成，由40毫米PVC管组成，中间部分模拟泄漏(图8)。
+设计和开发了一个基于实验室的测试工作台系统，以测试所提议的非侵入性(对管道)压力传感器组件的能力，用于检测和定位泄漏。该系统由一个由40毫米PVC管组成U型截面，中间部分模拟泄漏(如图8)。水在系统中通过一种普通的水泵循环，能够提供3标准压力。一个直径为10毫米的孔是在PVC管段中间部分制成，如图8所示。这个孔被插入了一个橡胶插入物，它会在一个随机的时间后弹出，导致管道泄漏，但当橡胶插入弹出来的时候，它的行为更像是一个小爆炸。
+#####图8 实验室检测装置的照片
+![](/assets/图8.png)
 
 [26] Sadeghioon, A.M.; Walton, R.; Chapman, D.; Metje, N.; Anthony, C.; Ward, M. Design and
 development of a non intrusive pressure measurement system for pipeline monitoring. J. Pipeline
