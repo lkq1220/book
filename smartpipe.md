@@ -75,7 +75,7 @@
 
 ####3. Leak Detection Experimental Setup
 #####3.1. Laboratory Test
-设计和开发了一个基于实验室的测试工作台系统，以测试所提议的非侵入性(对管道)压力传感器组件的能力，用于检测和定位泄漏。
+设计和开发了一个基于实验室的测试工作台系统，以测试所提议的非侵入性(对管道)压力传感器组件的能力，用于检测和定位泄漏。该系统由一个U型截面组成，由40毫米PVC管组成，中间部分模拟泄漏(图8)。
 
 [26] Sadeghioon, A.M.; Walton, R.; Chapman, D.; Metje, N.; Anthony, C.; Ward, M. Design and
 development of a non intrusive pressure measurement system for pipeline monitoring. J. Pipeline
